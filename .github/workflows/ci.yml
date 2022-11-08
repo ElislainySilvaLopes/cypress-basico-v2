@@ -9,6 +9,7 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
+        uses: /home/runner/work/_actions/cypress-io/github-action/v2/dist/index.js
         uses: cypress-io/github-action@v2
 
 
