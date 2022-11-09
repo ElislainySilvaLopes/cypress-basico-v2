@@ -10,13 +10,8 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        with:
-          install-command : yarn install --immutable --immutable-cache
-          command: yarn cypress run-ct 
-          command-prefix: yarn dlx
-          wait-on: 'http://localhost:3000'
-          browser: chrome
-          headless: true
+        browser: chrome
+        headless: true
         
 
 
