@@ -14,8 +14,7 @@ jobs:
           working-directory: examples/config
           build: npm run build
           start: npm start
-          wait-on: 'http://localhost:3333'
-          config: baseUrl=http://localhost:3333
+         
 
 
 
