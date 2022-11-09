@@ -11,10 +11,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: npm run api, npm run web
-    # for now only a single URL can be waited on
-          wait-on: 'http://localhost:3050' 
-          
+         install-command : yarn install --immutable --immutable-cache
+         command: yarn cypress run-ct 
 
 
         
