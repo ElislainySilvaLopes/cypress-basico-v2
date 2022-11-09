@@ -14,7 +14,7 @@ jobs:
           command: npm test -- --record
           record: false
           config-file: cypress.json
-          test-script: npm test
+          test-script: npx jest "--ci" "--json" "--coverage" "--testLocationInResults" "--outputFile=report.json"
 
 
         
