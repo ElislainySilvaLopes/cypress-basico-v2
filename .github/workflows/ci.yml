@@ -1,35 +1,21 @@
 jobs:
-  end-to-end-tests:
-    name: End-to-End tests (web)
+  check-e2e-test:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
     steps:
-      ## Start Shared Setup
-      - name: checkout gather
-        uses: actions/checkout@v2
-
-      - name: setup node
-        uses: actions/setup-node@v2-beta
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
         with:
-          node-version: 12.18.3
+          node-version: 14.x
 
-      - uses: bahmutov/npm-install@HEAD
-      ## End Shared Setup
-
-      - name: cypress in chrome
-        uses: cypress-io/github-action@v1
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
+          install-command : yarn install --immutable --immutable-cache
+          start: yarn start
+          wait-on: 'http://localhost:3000'
           browser: chrome
           headless: true
-      - name: upload failure screenshots
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - name: upload failure videos
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+
+
+        
