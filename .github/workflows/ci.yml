@@ -15,7 +15,7 @@ jobs:
       - uses: bahmutov/npm-install@HEAD
       ## End Shared Setup
 
-      - name: cypress in chrome
+      - name: cypress run
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
