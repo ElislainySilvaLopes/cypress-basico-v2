@@ -15,9 +15,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           install-command : yarn install --immutable --immutable-cache
-          wait-on: 'http://localhost:3000'
-          browser: chrome
-          headless: true
+          command: yarn test:e2e
 
 
         
