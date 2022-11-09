@@ -11,10 +11,10 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          command: npm test -- --record
-          record: false
-          config-file: cypress.json
-          test-script: npx jest "--ci" "--json" "--coverage" "--testLocationInResults" "--outputFile=report.json"
+          start: npm run api, npm run web
+    # for now only a single URL can be waited on
+          wait-on: 'http://localhost:3050' 
+          
 
 
         
