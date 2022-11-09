@@ -11,7 +11,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          build: npm i -D cypress
+         install-command : yarn install --immutable --immutable-cache
+         command: yarn cypress run-ct 
         
 
 
