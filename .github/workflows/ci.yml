@@ -8,6 +8,13 @@ jobs:
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+      - name: Yarn Install if no cache hit
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn add --cached
+
+      - name: Eslint
+        run: yarn lint
+        
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
