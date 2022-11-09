@@ -10,6 +10,9 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
+        with:
+          install-command : yarn install --immutable --immutable-cache
+          command: yarn test:e2e
         
 
 
