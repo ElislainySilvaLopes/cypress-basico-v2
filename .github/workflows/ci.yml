@@ -14,6 +14,7 @@ jobs:
          install: false
          start: yarn start:test
          wait-on: 'http://localhost:3000'
+         wait-on-timeout: 200
          browser: chrome
          headless: true
         
