@@ -11,13 +11,17 @@ jobs:
           node-version: 14.x
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install-command : yarn install --immutable --immutable-cache
-          command: yarn test:e2e
-
-
+          install: false
+          start: yarn start
+          wait-on: 'http://localhost:3000'
+          browser: chrome
+          headless: true
         
         
 
