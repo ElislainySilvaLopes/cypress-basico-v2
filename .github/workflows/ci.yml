@@ -11,11 +11,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-         working-directory: ./frontend_new
-         build: npm run build:testing
-         start: npm run start:integration-test-server
-         record: true
-         
+          build: npm i -D cypress
+        
+
 
 
         
