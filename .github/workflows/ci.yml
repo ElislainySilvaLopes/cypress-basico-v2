@@ -1,21 +1,35 @@
-name: End-to-end tests 🧪
-on: [push]
 jobs:
-  cypress-run:
-    runs-on: ubuntu-20.04
+  end-to-end-tests:
+    name: End-to-End tests (web)
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     steps:
-      - name: Checkout
+      ## Start Shared Setup
+      - name: checkout gather
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12.18.3
+
+      - uses: bahmutov/npm-install@HEAD
+      ## End Shared Setup
+
+      - name: cypress in chrome
         uses: cypress-io/github-action@v2
         with:
-         browser: chrome
-         headless: true
-
-        
-
-
-
-        
+          browser: chrome
+          headless: true
+      - name: upload failure screenshots
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - name: upload failure videos
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
