@@ -17,21 +17,19 @@ jobs:
       ## End Shared Setup
 
       - name: cypress in chrome
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v1
         with:
           browser: chrome
           headless: true
       - name: upload failure screenshots
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       - name: upload failure videos
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-videos
           path: cypress/videos
-
-        
