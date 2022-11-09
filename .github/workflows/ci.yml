@@ -10,9 +10,10 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        browser: chrome
-        headless: false
-        
+        with:
+         browser: chrome
+         headless: false
+
         
 
 
